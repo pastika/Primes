@@ -38,7 +38,7 @@ std::vector<int> getPrimes(const unsigned int NEVTS)
 
 	delete[] P;
 
-	return std::move(primes);
+	return primes;
 }
 
 int main()

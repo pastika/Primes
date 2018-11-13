@@ -10,33 +10,33 @@ std::vector<int> getPrimes(const unsigned int NEVTS)
 	const int A = NEVTS / 2;
 	const int SA = (int)sqrt((double)NEVTS) / 2;
 
-	unsigned int k, i;
-	bool *P = new bool[A];
+	bool *sieve = new bool[A];
 	std::vector<int> primes;
+	//preload 2 because we removed all even numbers
 	primes.push_back(2);
 
-	for (i = 0; i < A; ++i) P[i] = true;
-	for (k = 1; k <= SA; ++k)
+	for (unsigned int i = 0; i < A; ++i) sieve[i] = true;
+	for (unsigned int primeToCheck = 1; primeToCheck <= SA; ++primeToCheck)
 	{
-		if (P[k])
+		if (sieve[primeToCheck])
 		{
-			for (i = 2 * k*(k + 1); i < A; i += (2 * k + 1))
+			for (unsigned int numToMask = 2 * primeToCheck*(primeToCheck + 1); numToMask < A; numToMask += (2 * primeToCheck + 1))
 			{
-				P[i] = false;
+				sieve[numToMask] = false;
 			}
 		}
 	}
 	
 
-	for (i = 1; i < A; i++)
+	for (unsigned int i = 1; i < A; i++)
 	{
-		if (P[i])
+		if (sieve[i])
 		{
 			primes.push_back(i * 2 + 1);
 		}
 	}
 
-	delete[] P;
+	delete[] sieve;
 
 	return primes;
 }

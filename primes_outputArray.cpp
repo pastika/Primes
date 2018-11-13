@@ -3,12 +3,13 @@
 #include <iostream>
 #include <vector>
 
-const int NEVTS = 1000000000;
-const int A = NEVTS/2;
-const int SA = (int)sqrt((double)NEVTS)/2;
+constexpr unsigned int NEVTS = 1000000000;
 
-std::vector<int> getPrimes(int NEVTS, int A, int SA)
+std::vector<int> getPrimes(const unsigned int NEVTS)
 {
+	const int A = NEVTS / 2;
+	const int SA = (int)sqrt((double)NEVTS) / 2;
+
 	unsigned int k, i;
 	bool *P = new bool[A];
 	std::vector<int> primes;
@@ -19,7 +20,6 @@ std::vector<int> getPrimes(int NEVTS, int A, int SA)
 	{
 		if (P[k])
 		{
-			//primes.push_back(k * 2 + 1);
 			for (i = 2 * k*(k + 1); i < A; i += (2 * k + 1))
 			{
 				P[i] = false;
@@ -38,20 +38,15 @@ std::vector<int> getPrimes(int NEVTS, int A, int SA)
 
 	delete[] P;
 
-	return primes;
+	return std::move(primes);
 }
 
 int main()
 {
 	clock_t t0, t1;
 	t0 = clock();
-	std::vector<int> primes = getPrimes(NEVTS, A, SA);
+	std::vector<int> primes = getPrimes(NEVTS);
 	t1 = clock();
 	
 	std::cout << "I have found " << primes.size() << " primes in " << (double)(t1 - t0)/CLOCKS_PER_SEC << " seconds.\n";
-
-	//for (int i = 0; i < primes.size(); ++i)
-	//{
-	//	std::cout << primes[i] << std::endl;
-	//}
 }

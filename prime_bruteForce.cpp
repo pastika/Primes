@@ -2,6 +2,7 @@
 #include <cmath>
 #include <ctime>
 #include <vector>
+#include <cstdint>
 
 int main()
 {

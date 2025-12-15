@@ -2,6 +2,7 @@
 #include <ctime>
 #include <iostream>
 #include <vector>
+#include <cstdint>
 
 constexpr unsigned int NEVTS = 1000000000;
 

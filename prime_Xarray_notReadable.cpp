@@ -1,9 +1,10 @@
 #include <ctime>
 #include <cmath>
 #include <iostream>
+#include <cstdint>
 
 //Type of variable to bit pack
-typedef unsigned __int16 T;
+typedef std::uint32_t T;
 //Number of numbers to check (must be multiple of sizeof(T)*16)
 const unsigned int NEVTS = 1000000000;
 

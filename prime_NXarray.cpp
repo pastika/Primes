@@ -1,9 +1,10 @@
 #include <cmath>
 #include <ctime>
 #include <iostream>
+#include <cstdint>
 
 //Type of variable to bit pack
-typedef unsigned __int64 T;
+typedef std::uint64_t T;
 //Number of numbers to check (must be multiple of sizeof(T)*16)
 const unsigned int NEVTS = 10000000;
 //Number of arrays of size NEVTS to search through (must be less than NEVTS)

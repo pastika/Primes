@@ -1,6 +1,7 @@
 #include <cmath>
 #include <ctime>
 #include <iostream>
+#include <cstdint>
 
 const int NEVTS = 1000000000;
 const int A = NEVTS/2;

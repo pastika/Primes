@@ -2,7 +2,7 @@
 CXX = g++
 
 # Define compiler flags (optional)
-CXXFLAGS = -O2
+CXXFLAGS = -O2 -g
 
 # Find all .cpp files in the current directory
 # and use patsubst to generate the desired executable names

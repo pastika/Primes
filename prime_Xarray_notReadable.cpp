@@ -35,10 +35,11 @@ int main()
 	
 	t0 = clock();
 	for(i = 0; i < A; i++) P[i] = ~(T)(0);
-	for(k = 1; k <= SNA; k++) if(P[k >> L2N] & (T(1) << (k & (N - 1)))) for(i = 3*k + 1; i < NEVTS/2; i += (2*k + 1)) /*if(P[i >> L2N] & (T(1) << (i & (N - 1))))*/ P[i >> L2N] &= ~(T(1) << (i & (N - 1)));
-	t1 = clock();
+	for(k = 1; k <= SNA; k++) if(P[k >> L2N] & (T(1) << (k & (N - 1)))) for(i = 2*k*(k + 1); i < NEVTS/2; i += (2*k + 1)) /*if(P[i >> L2N] & (T(1) << (i & (N - 1))))*/ P[i >> L2N] &= ~(T(1) << (i & (N - 1)));
 
-	for(i = 0; i < NEVTS/2; i++) if(P[i >> L2N] & (T(1) << (i & (N - 1)))) numPrimes++;
+        for(i = 0; i < NEVTS/2; i++) if(P[i >> L2N] & (T(1) << (i & (N - 1)))) numPrimes++;
+        t1 = clock();
+
 	std::cout << "I have found " << numPrimes + 1 << " primes in " << (double)(t1 - t0)/CLOCKS_PER_SEC << " seconds.\n";
 }
 

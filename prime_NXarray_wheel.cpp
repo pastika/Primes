@@ -12,7 +12,7 @@ typedef std::uint64_t uint64;
 //Number of numbers to check (must be multiple of sizeof(T)*16)
 const uint64 NEVTS = 10000000;
 //Number of arrays of size NEVTS to search through (must be less than NEVTS)
-const uint64 NN = 1000;
+const uint64 NN = 100;
 //Wheel number
 const uint64 K = 3;
 
